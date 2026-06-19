@@ -95,42 +95,42 @@ export function ResumeUpload({ file, onFileChange }: ResumeUploadProps) {
           onDragLeave={() => setIsDragging(false)}
           onDrop={handleDrop}
           onClick={() => inputRef.current?.click()}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-12 transition ${
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 sm:px-6 py-8 sm:py-12 transition ${
             isDragging
               ? "border-violet-500/60 bg-violet-500/10"
               : "border-zinc-700 bg-zinc-900/40 hover:border-violet-500/40 hover:bg-zinc-900/60"
           }`}
         >
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
-            <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="mb-3 sm:mb-4 flex h-12 sm:h-14 w-12 sm:w-14 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
+            <svg className="h-6 sm:h-7 w-6 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
             </svg>
           </div>
-          <p className="text-sm font-medium text-zinc-200">
+          <p className="text-xs sm:text-sm font-medium text-zinc-200">
             Drop your resume here, or{" "}
             <span className="text-violet-400">browse files</span>
           </p>
-          <p className="mt-2 text-xs text-zinc-500">
+          <p className="mt-1 sm:mt-2 text-xs text-zinc-500">
             PNG, JPEG, JPG, DOCX, or PDF — max 10 MB
           </p>
         </div>
       ) : (
-        <div className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/60 px-5 py-4">
-          <div className="flex items-center gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <div className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/60 px-3 sm:px-5 py-3 sm:py-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div className="flex h-9 sm:h-10 w-9 sm:w-10 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
+              <svg className="h-4 sm:h-5 w-4 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
               </svg>
             </div>
-            <div>
-              <p className="text-sm font-medium text-zinc-200">{file.name}</p>
+            <div className="min-w-0">
+              <p className="text-xs sm:text-sm font-medium text-zinc-200 truncate">{file.name}</p>
               <p className="text-xs text-zinc-500">{formatFileSize(file.size)}</p>
             </div>
           </div>
           <button
             type="button"
             onClick={handleRemove}
-            className="rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-400 transition hover:bg-zinc-800 hover:text-zinc-200"
+            className="rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-zinc-400 transition hover:bg-zinc-800 hover:text-zinc-200 shrink-0"
           >
             Remove
           </button>

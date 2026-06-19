@@ -7,7 +7,7 @@ export function Logo() {
         R
       </span>
       <span className="text-lg font-semibold tracking-tight text-zinc-100">
-        Resume<span className="text-violet-400">AI</span>
+        Resu<span className="text-violet-400">nora</span>
       </span>
     </Link>
   );

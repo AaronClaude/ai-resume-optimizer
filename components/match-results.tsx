@@ -25,7 +25,7 @@ function KeywordRing({ matched, total }: { matched: number; total: number }) {
   const offset = circumference - (pct / 100) * circumference;
 
   return (
-    <div className="relative flex h-24 w-24 items-center justify-center">
+    <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center flex-shrink-0">
       <svg className="-rotate-90" width="96" height="96" viewBox="0 0 96 96">
         <circle
           cx="48"
@@ -56,8 +56,8 @@ function KeywordRing({ matched, total }: { matched: number; total: number }) {
         </defs>
       </svg>
       <div className="absolute text-center">
-        <p className="text-lg font-bold text-zinc-100">{matched}</p>
-        <p className="text-[10px] text-zinc-500">of {total}</p>
+        <p className="text-base sm:text-lg font-bold text-zinc-100">{matched}</p>
+        <p className="text-[8px] sm:text-[10px] text-zinc-500">of {total}</p>
       </div>
     </div>
   );
@@ -68,14 +68,14 @@ export function MatchResults({ result }: MatchResultsProps) {
     result;
 
   return (
-    <div className="match-results-scroll mt-6 max-h-[calc(100vh-8rem)] space-y-5 overflow-y-auto pr-1">
+    <div className="match-results-scroll mt-4 sm:mt-6 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-8rem)] space-y-3 sm:space-y-5 overflow-y-auto pr-1">
       {/* Overall score */}
       <div>
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
             Overall match
           </span>
-          <span className={`rounded-full bg-zinc-800/80 px-3 py-1 text-sm font-semibold ${scoreColor(overallScore)}`}>
+          <span className={`rounded-full bg-zinc-800/80 px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm font-semibold ${scoreColor(overallScore)}`}>
             {overallScore}%
           </span>
         </div>
@@ -85,33 +85,33 @@ export function MatchResults({ result }: MatchResultsProps) {
             style={{ width: `${overallScore}%` }}
           />
         </div>
-        <p className="mt-3 text-sm leading-relaxed text-zinc-400">{summary}</p>
+        <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-zinc-400">{summary}</p>
       </div>
 
       {/* Quick stats */}
-      <div className="grid grid-cols-3 gap-2">
-        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 text-center">
-          <p className="text-lg font-bold text-emerald-400">{stats.strengthsCount}</p>
-          <p className="text-[10px] uppercase tracking-wider text-zinc-500">Strengths</p>
+      <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-2 sm:p-3 text-center">
+          <p className="text-base sm:text-lg font-bold text-emerald-400">{stats.strengthsCount}</p>
+          <p className="text-[8px] sm:text-[10px] uppercase tracking-wider text-zinc-500">Strengths</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 text-center">
-          <p className="text-lg font-bold text-amber-400">{stats.gapsCount}</p>
-          <p className="text-[10px] uppercase tracking-wider text-zinc-500">Gaps</p>
+        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-2 sm:p-3 text-center">
+          <p className="text-base sm:text-lg font-bold text-amber-400">{stats.gapsCount}</p>
+          <p className="text-[8px] sm:text-[10px] uppercase tracking-wider text-zinc-500">Gaps</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 text-center">
-          <p className="text-lg font-bold text-violet-400">{missingKeywords.length}</p>
-          <p className="text-[10px] uppercase tracking-wider text-zinc-500">Missing</p>
+        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-2 sm:p-3 text-center">
+          <p className="text-base sm:text-lg font-bold text-violet-400">{missingKeywords.length}</p>
+          <p className="text-[8px] sm:text-[10px] uppercase tracking-wider text-zinc-500">Missing</p>
         </div>
       </div>
 
       {/* Category breakdown + keyword ring */}
-      <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
+      <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 sm:p-4">
         <p className="mb-3 text-xs font-medium uppercase tracking-wider text-zinc-500">
           Category breakdown
         </p>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
           <KeywordRing matched={stats.matchedKeywords} total={stats.totalKeywords} />
-          <div className="flex-1 space-y-2.5">
+          <div className="flex-1 space-y-2 sm:space-y-2.5 w-full">
             {categoryScores.map((cat) => (
               <div key={cat.label}>
                 <div className="mb-1 flex items-center justify-between text-xs">
@@ -128,18 +128,18 @@ export function MatchResults({ result }: MatchResultsProps) {
             ))}
           </div>
         </div>
-        <p className="mt-3 text-center text-[10px] text-zinc-600">Keywords matched</p>
+        <p className="mt-3 text-center text-[9px] sm:text-[10px] text-zinc-600">Keywords matched</p>
       </div>
 
       {/* Strengths */}
       {strengths.length > 0 && (
-        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
+        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 sm:p-4">
           <p className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">
             Key strengths
           </p>
-          <ul className="space-y-1.5">
+          <ul className="space-y-1 sm:space-y-1.5">
             {strengths.slice(0, 4).map((item, i) => (
-              <li key={i} className="flex gap-2 text-sm text-zinc-300">
+              <li key={i} className="flex gap-2 text-xs sm:text-sm text-zinc-300">
                 <span className="mt-0.5 shrink-0 text-emerald-400">✓</span>
                 <span>{item}</span>
               </li>
@@ -150,16 +150,16 @@ export function MatchResults({ result }: MatchResultsProps) {
 
       {/* Needs improvement */}
       {improvements.length > 0 && (
-        <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-4">
-          <p className="mb-3 text-xs font-medium uppercase tracking-wider text-amber-400/80">
+        <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-3 sm:p-4">
+          <p className="mb-2 sm:mb-3 text-xs font-medium uppercase tracking-wider text-amber-400/80">
             Needs improvement
           </p>
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {improvements.map((item, i) => (
-              <div key={i} className="rounded-md border border-zinc-800/80 bg-zinc-950/40 p-3">
+              <div key={i} className="rounded-md border border-zinc-800/80 bg-zinc-950/40 p-2 sm:p-3">
                 <p className="text-xs font-medium text-amber-300">{item.area}</p>
-                <p className="mt-1 text-sm text-zinc-400">{item.issue}</p>
-                <p className="mt-2 text-sm text-zinc-200">
+                <p className="mt-1 text-xs sm:text-sm text-zinc-400">{item.issue}</p>
+                <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-zinc-200">
                   <span className="text-violet-400">→ </span>
                   {item.suggestion}
                 </p>
@@ -171,11 +171,11 @@ export function MatchResults({ result }: MatchResultsProps) {
 
       {/* Missing keywords */}
       {missingKeywords.length > 0 && (
-        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
+        <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-3 sm:p-4">
           <p className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">
             Missing keywords
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5">
             {missingKeywords.map((kw, i) => (
               <span
                 key={i}

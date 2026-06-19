@@ -7,10 +7,10 @@ type AnalysisProgressProps = {
 
 export function AnalysisProgress({ progress, stage }: AnalysisProgressProps) {
   return (
-    <div className="mt-8 space-y-4">
+    <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
       <div className="flex flex-col items-center text-center">
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
-          <svg className="h-6 w-6 animate-spin" fill="none" viewBox="0 0 24 24">
+        <div className="mb-3 sm:mb-4 flex h-10 sm:h-12 w-10 sm:w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
+          <svg className="h-5 sm:h-6 w-5 sm:w-6 animate-spin" fill="none" viewBox="0 0 24 24">
             <circle
               className="opacity-25"
               cx="12"
@@ -26,8 +26,8 @@ export function AnalysisProgress({ progress, stage }: AnalysisProgressProps) {
             />
           </svg>
         </div>
-        <p className="text-sm font-medium text-zinc-300">Analyzing your resume</p>
-        <p className="mt-1 text-xs text-zinc-500">{stage}</p>
+        <p className="text-xs sm:text-sm font-medium text-zinc-300">Analyzing your resume</p>
+        <p className="mt-1 text-[10px] sm:text-xs text-zinc-500">{stage}</p>
       </div>
 
       <div>
